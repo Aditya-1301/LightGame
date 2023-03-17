@@ -22,14 +22,14 @@ int main()
     Object enemy = { enemyImage, {0,0}};
     setPlayer(&player, 60, 60);
     setEnemy(&enemy, 150, 150);
-    // setPlayerHitBoxRectangular(&player, 50, 50);
-    // setEnemyHitBoxRectangular(&enemy, enemyImage.height, enemyImage.width);
+    setPlayerHitBoxRectangular(&player, 50, 50);
+    setEnemyHitBoxRectangular(&enemy, enemyImage.height, enemyImage.width);
 
     //printf("Level1 Height = %d | Level1 Width = %d", level1.height, level1.width);
     while (!WindowShouldClose())
     {
         //While logic
-        playerMovement(&player);
+        playerMovement(&player,&enemy);
         //collisionLog(&player, &enemy);
         //Begin Drawing
         BeginDrawing();
