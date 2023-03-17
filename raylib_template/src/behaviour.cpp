@@ -1,13 +1,7 @@
 #include <raylib.h>
 #include <stdio.h>
 #include <math.h>
-#include "collision.cpp"
-
-typedef struct Object{
-    Image objectImage;
-    //Rectangle hitBox; // The hitbox probably will need to be scaled according to the image's size.
-    Vector2 position; // Vector2 Contains the X and Y coordinates of the Player.
-}Object;
+#include "object.h"
 
 // void setPlayerHitBoxRectangular(Object * p, int width, int height){
 //     Rectangle hitBox = { p -> position.x, p-> position.y, width, height };

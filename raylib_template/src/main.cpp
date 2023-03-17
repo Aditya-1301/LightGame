@@ -1,7 +1,6 @@
 #include <raylib.h>
 #include <stdio.h>
 #include <math.h>
-#include "object.cpp"
 #include "collision.cpp"
 
 #define W_WIDTH 1368
@@ -19,9 +18,6 @@ int main()
     Texture frameTex = LoadTextureFromImage(frameImage);
     Texture enemyTex = LoadTextureFromImage(enemyImage);
 
-    UnloadImage(frameImage);
-    UnloadImage(enemyImage);
-
     Object player = {0};
     Object enemy = { enemyImage, {0,0}};
     setPlayer(&player, 60, 60);
@@ -34,7 +30,7 @@ int main()
     {
         //While logic
         playerMovement(&player);
-        collisionLog(&player, &enemy);
+        //collisionLog(&player, &enemy);
         //Begin Drawing
         BeginDrawing();
         ClearBackground(WHITE);
@@ -43,6 +39,9 @@ int main()
         DrawCircle(player.position.x, player.position.y, 50, RED);
         EndDrawing();
     }
+
+    UnloadImage(frameImage);
+    UnloadImage(enemyImage);
 
     CloseWindow();
 

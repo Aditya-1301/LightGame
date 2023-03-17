@@ -1,7 +1,7 @@
 #include <raylib.h>
 #include <stdio.h>
 #include <math.h>
-#include "object.cpp"
+#include "behaviour.cpp"
 
 bool collisionWithEnemy(Object* player, Object * enemy){
     int p_x = player -> position.x;
