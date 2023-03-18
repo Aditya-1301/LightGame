@@ -3,6 +3,8 @@
 #include <math.h>
 #include "behaviour.cpp"
 
+void playerMovement(Object * p, Object * e);
+
 bool collisionWithEnemy(Object* player, Object * enemy){
     int p_x = player -> position.x;
     int p_y = player -> position.y;
@@ -57,9 +59,10 @@ void movementAfterCollision(Object* player, Object * enemy){
     int e_y = enemy -> position.y;
     int e_w = enemy -> objectImage.width;
     int e_h = enemy -> objectImage.height;
-    if((p_x + p_w < e_x) || (p_x > e_x + e_w) || (p_y + p_h > e_y) || (p_y < e_y + e_h)){
+    if((p_x + p_w < e_x) && (p_x > e_x + e_w) && (p_y + p_h > e_y) && (p_y < e_y + e_h)){
         movement(player,enemy);
     }
+    // else playerMovement(player, enemy);
 }
 
 void collisionLog(Object* player, Object* enemy){
@@ -91,6 +94,6 @@ void playerMovement(Object * p, Object* e){
         movement(p,e);
     }
     else{
-        movementAfterCollision(p,e);
+       movementAfterCollision(p,e);
     }
 }
