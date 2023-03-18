@@ -22,8 +22,8 @@ int main()
     Object enemy = { enemyImage, {0,0}};
     setPlayer(&player, 60, 60);
     setEnemy(&enemy, 150, 150);
-    setPlayerHitBoxRectangular(&player, 50, 50);
-    setEnemyHitBoxRectangular(&enemy, enemyImage.height, enemyImage.width);
+    setPlayerHitBoxRectangular(&player, 55, 55);
+    setEnemyHitBoxRectangular(&enemy, (int)(enemyImage.height * 1.1), (int)(enemyImage.width * 1.1));
 
     //printf("Level1 Height = %d | Level1 Width = %d", level1.height, level1.width);
     while (!WindowShouldClose())
@@ -50,7 +50,7 @@ int main()
 
 
 /*
-1. We can probably have a rectangular hitbox for each object (Enemy/Player etc). 
+1. We can probably have a rectangular hitbox for each object (Enemy/Player etc). -
 2. We can have an array that contains positions of each enemy or object in the map at all times so that we can always check for collisions.
 3. We might need to resort to using a true/false array instead for the collision of the map boundaries and such (maybe). 
 */

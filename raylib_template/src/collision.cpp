@@ -27,6 +27,41 @@ bool collisionWithEnemy(Object* player, Object * enemy){
     return false;
 }
 
+void movement(Object * p, Object* e){
+    int playerSize = 50;
+    int move = 10;
+    if(IsKeyDown(KEY_D) && p->position.x + move + playerSize <= GetScreenWidth()){
+        p->position.x += move;
+        p->hitBox.x +=move;
+    }
+    if(IsKeyDown(KEY_A) && p->position.x - move - playerSize > 0){
+        p->position.x -= move;
+        p->hitBox.x -=move;
+    }
+    if(IsKeyDown(KEY_S) && p->position.y + move + playerSize <= GetScreenHeight()){
+        p->position.y += move;
+        p->hitBox.y +=move;
+    }
+    if(IsKeyDown(KEY_W) && p->position.y - move - playerSize > 0){
+        p->position.y -= move;
+        p->hitBox.y -=move;
+    }
+}
+
+void movementAfterCollision(Object* player, Object * enemy){
+    int p_x = player -> position.x;
+    int p_y = player -> position.y;
+    int p_w = player -> objectImage.width;
+    int p_h = player -> objectImage.height ;
+    int e_x = enemy -> position.x;
+    int e_y = enemy -> position.y;
+    int e_w = enemy -> objectImage.width;
+    int e_h = enemy -> objectImage.height;
+    if((p_x + p_w < e_x) || (p_x > e_x + e_w) || (p_y + p_h > e_y) || (p_y < e_y + e_h)){
+        movement(player,enemy);
+    }
+}
+
 void collisionLog(Object* player, Object* enemy){
     int p_x = player -> position.x;
     int p_y = player -> position.y;
@@ -38,10 +73,7 @@ void collisionLog(Object* player, Object* enemy){
 }
 
 bool collisionWithEnemy2(Object* player, Object * enemy){
-    if(CheckCollisionRecs(player->hitBox, enemy->hitBox)){
-        return true;
-    }
-    return false;
+    return CheckCollisionRecs(player->hitBox, enemy->hitBox);
 }
 
 void collisionLog2(Object* player, Object* enemy){
@@ -55,21 +87,10 @@ void collisionLog2(Object* player, Object* enemy){
 }
 
 void playerMovement(Object * p, Object* e){
-    int playerSize = 50;
-    int move = 10;
-    collisionLog2(p, e);
-    if(!collisionWithEnemy2(p, e)){
-        if(IsKeyDown(KEY_D) && p->position.x + move + playerSize <= GetScreenWidth()){
-            p->position.x += move;
-        }
-        if(IsKeyDown(KEY_A) && p->position.x - move - playerSize > 0){
-            p->position.x -= move;
-        }
-        if(IsKeyDown(KEY_S) && p->position.y + move + playerSize <= GetScreenHeight()){
-            p->position.y += move;
-        }
-        if(IsKeyDown(KEY_W) && p->position.y - move - playerSize > 0){
-            p->position.y -= move;
-        }
+    if(!collisionWithEnemy2(p,e)){
+        movement(p,e);
+    }
+    else{
+        movementAfterCollision(p,e);
     }
 }
