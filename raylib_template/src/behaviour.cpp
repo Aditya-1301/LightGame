@@ -16,6 +16,10 @@ void setEnemyHitBoxRectangular(Object * e, int height, int width){
 void setPlayer(Object* p, int x, int y){
     p -> position.x = x;
     p -> position.y = y;
+    p -> availableDirections[0] = 'W';
+    p-> availableDirections[1] = 'A';
+    p -> availableDirections[2] = 'S';
+    p -> availableDirections[3] = 'D';
 }
 
 void setEnemy(Object* p, int x, int y){
