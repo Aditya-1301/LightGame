@@ -24,6 +24,13 @@ void collisionLog(Object* player, Object* enemy){
 void playerMovement(Object * player, Object* enemy){
     int playerSize = 50;
     int move = 10;
+    if(!collisionWithEnemy(player,enemy)){
+        player->availableDirections[0] = 'W';
+        player->availableDirections[1] = 'A';
+        player->availableDirections[2] = 'S';
+        player->availableDirections[3] = 'D';
+    }
+
     if(IsKeyDown(KEY_D) && player->position.x + move + playerSize <= GetScreenWidth() && player->availableDirections[3] == 'D'){
         player->position.x += move;
         player->hitBox.x =(player->position.x - playerSize);
@@ -44,60 +51,5 @@ void playerMovement(Object * player, Object* enemy){
         player->hitBox.y =(player->position.y - playerSize);
         if(collisionWithEnemy(player,enemy)) player->availableDirections[0] = '\0';
     }
-
-    if(!collisionWithEnemy(player,enemy)){
-        player->availableDirections[0] = 'W';
-        player->availableDirections[1] = 'A';
-        player->availableDirections[2] = 'S';
-        player->availableDirections[3] = 'D';
-    }
 }
 
-// bool collisionWithEnemy(Object* player, Object * enemy){
-//     int p_x = player -> position.x;
-//     int p_y = player -> position.y;
-//     int p_w = (int)((player -> objectImage.width) / 2);
-//     int p_h = (int)((player -> objectImage.height) / 2) ;
-//     int e_x = enemy -> position.x;
-//     int e_y = enemy -> position.y;
-//     int e_w = (int)((enemy -> objectImage.width) / 2);
-//     int e_h = (int)((enemy -> objectImage.height) / 2);
-//     if(p_x + p_w > e_x - e_w){
-//         return true;
-//     }
-//     if(p_x - p_w < e_x + e_w){
-//         return true;
-//     }
-//     if(p_y - p_h < e_y + e_h){
-//         return true;
-//     }
-//     if(p_y + p_h < e_y - e_h){
-//         return true;
-//     }
-//     return false;
-// }
-//
-// void collisionLog(Object* player, Object* enemy){
-//     int p_x = player -> position.x;
-//     int p_y = player -> position.y;
-//     int e_x = enemy -> position.x;
-//     int e_y = enemy -> position.y;
-//     if(collisionWithEnemy(player, enemy)){
-//         printf("Collision Detected; p_coordinates -> %d, %d ; e_coordinates -> %d, %d", p_x, p_y, e_x, e_y);
-//     }
-// }
-//
-// void movementAfterCollision(Object* player, Object * enemy){
-//     int p_x = player -> position.x;
-//     int p_y = player -> position.y;
-//     int p_w = player -> objectImage.width;
-//     int p_h = player -> objectImage.height ;
-//     int e_x = enemy -> position.x;
-//     int e_y = enemy -> position.y;
-//     int e_w = enemy -> objectImage.width;
-//     int e_h = enemy -> objectImage.height;
-//     if((p_x + p_w < e_x) && (p_x > e_x + e_w) && (p_y + p_h > e_y) && (p_y < e_y + e_h)){
-//         movement(player,enemy);
-//     }
-//     // else playerMovement(player, enemy);
-// }

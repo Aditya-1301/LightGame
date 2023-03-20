@@ -1,7 +1,14 @@
 #include <raylib.h>
 #include <stdio.h>
 #include <math.h>
-#include "object.h"
+
+class Object{
+    public:
+        Image objectImage;
+        Rectangle hitBox; 
+        Vector2 position;
+        char availableDirections [4];
+}
 
 void setPlayerHitBoxRectangular(Object * p, int width, int height){
     Rectangle hitBox = { p -> position.x - width/2, p-> position.y - height/2, width, height };
@@ -26,5 +33,3 @@ void setEnemy(Object* p, int x, int y){
     p -> position.x = x;
     p -> position.y = y;
 }
-
-
