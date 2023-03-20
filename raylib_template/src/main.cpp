@@ -22,7 +22,7 @@ int main()
     Object enemy = { enemyImage, {0,0}};
     setPlayer(&player, 60, 60);
     setEnemy(&enemy, 150, 150);
-    setPlayerHitBoxRectangular(&player, 50, 50);
+    setPlayerHitBoxRectangular(&player, 100, 100);
     setEnemyHitBoxRectangular(&enemy, enemyImage.height, enemyImage.width);
 
     //printf("Level1 Height = %d | Level1 Width = %d", level1.height, level1.width);
@@ -37,6 +37,7 @@ int main()
         DrawTexture(frameTex, 0, 0, WHITE);
         DrawRectangle(enemy.position.x, enemy.position.y, enemy.hitBox.width, enemy.hitBox.height, BLUE);
         DrawTexture(enemyTex, enemy.position.x, enemy.position.y, WHITE);
+        DrawRectangle(player.hitBox.x, player.hitBox.y, player.hitBox.width, player.hitBox.height, GREEN);
         DrawCircle(player.position.x, player.position.y, 50, RED);
         EndDrawing();
     }

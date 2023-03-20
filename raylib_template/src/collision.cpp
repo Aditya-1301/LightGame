@@ -3,8 +3,8 @@
 #include <math.h>
 #include "behaviour.cpp"
 
-bool collisionWithEnemy(Object* player, Object * enemy);
-void collisionLog(Object* player, Object * enemy);
+bool collisionWithEnemy(Object * player, Object * enemy);
+void collisionLog(Object * player, Object * enemy);
 void playerMovement(Object * player, Object * enemy);
 
 bool collisionWithEnemy(Object* player, Object * enemy){
@@ -26,22 +26,22 @@ void playerMovement(Object * player, Object* enemy){
     int move = 10;
     if(IsKeyDown(KEY_D) && player->position.x + move + playerSize <= GetScreenWidth() && player->availableDirections[3] == 'D'){
         player->position.x += move;
-        player->hitBox.x +=move;
+        player->hitBox.x =(player->position.x - playerSize);
         if(collisionWithEnemy(player,enemy)) player->availableDirections[3] = '\0';
     }
     if(IsKeyDown(KEY_A) && player->position.x - move - playerSize > 0 && player->availableDirections[1] == 'A'){
         player->position.x -= move;
-        player->hitBox.x -=move;
+        player->hitBox.x =(player->position.x - playerSize);
         if(collisionWithEnemy(player,enemy)) player->availableDirections[1] = '\0';
     }
     if(IsKeyDown(KEY_S) && player->position.y + move + playerSize <= GetScreenHeight() && player->availableDirections[2] == 'S'){
         player->position.y += move;
-        player->hitBox.y +=move;
+        player->hitBox.y =(player->position.y - playerSize);
         if(collisionWithEnemy(player,enemy)) player->availableDirections[2] = '\0';
     }
     if(IsKeyDown(KEY_W) && player->position.y - move - playerSize > 0 && player->availableDirections[0] == 'W'){
         player->position.y -= move;
-        player->hitBox.y -=move;
+        player->hitBox.y =(player->position.y - playerSize);
         if(collisionWithEnemy(player,enemy)) player->availableDirections[0] = '\0';
     }
 

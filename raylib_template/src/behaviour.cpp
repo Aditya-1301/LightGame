@@ -4,7 +4,7 @@
 #include "object.h"
 
 void setPlayerHitBoxRectangular(Object * p, int width, int height){
-    Rectangle hitBox = { p -> position.x, p-> position.y, width, height };
+    Rectangle hitBox = { p -> position.x - width/2, p-> position.y - height/2, width, height };
     p -> hitBox = hitBox;
 }
 
