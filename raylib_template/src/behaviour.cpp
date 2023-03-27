@@ -8,7 +8,7 @@ class Object{
         Rectangle hitBox; 
         Vector2 position;
         char availableDirections [4];
-}
+};
 
 void setPlayerHitBoxRectangular(Object * p, int width, int height){
     Rectangle hitBox = { p -> position.x - width/2, p-> position.y - height/2, width, height };
