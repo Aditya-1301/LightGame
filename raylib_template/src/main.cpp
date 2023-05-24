@@ -34,7 +34,7 @@ int main()
         //Begin Drawing
         BeginDrawing();
         ClearBackground(WHITE);
-        DrawTexture(frameTex, 0, 0, WHITE);
+        //DrawTexture(frameTex, 0, 0, WHITE);
         DrawRectangle(enemy.position.x, enemy.position.y, enemy.hitBox.width, enemy.hitBox.height, BLUE);
         DrawTexture(enemyTex, enemy.position.x, enemy.position.y, WHITE);
         DrawRectangle(player.hitBox.x, player.hitBox.y, player.hitBox.width, player.hitBox.height, GREEN);
